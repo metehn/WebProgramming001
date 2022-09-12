@@ -1,18 +1,21 @@
-<%@ page import="com.metehan.webprogramming001.Sample" %>
-<%@ page import="com.metehan.webprogramming001.SampleManager" %>
+<%@ page import="com.metehan.webprogramming001.entitymanager.Sample" %>
+<%@ page import="com.metehan.webprogramming001.entitymanager.SampleManager" %>
 <%
-    String insert = request.getParameter("insert");
+
+    String update = request.getParameter("update");
     String message = "Lütfen bilgileri giriniz.";
 
-    if (insert != null) {
+    if (update != null) {
         String sampleName = request.getParameter("sampleName");
         double sampleValue = Double.parseDouble(request.getParameter("sampleValue"));
 
         Sample sample = new Sample(0, sampleName, sampleValue);
         SampleManager manager = new SampleManager();
-        boolean inserted = manager.insert(sample);
+        boolean updated = manager.insert(sample);
 //iso-8859-9
-        message = "Kayıt eklendi " + sampleName + " " + sampleValue + " " + (inserted?"Evet":"Hayır");
+        message = "Kayıt güncellendi " + sampleName + " " + sampleValue + " " + (updated?"Evet":"Hayır");
+    }else{
+
     }
 
 %>
@@ -30,8 +33,10 @@
     <form>
         Örnek Adı: <input type="text" name="sampleName"/> <br/>
         Örnek Değer: <input type="text" name="sampleValue"/> <br/>
-        <input type="submit" value="Ekle" name="insert"/> <br/>
+        <input type="submit" value="Ekle" name="update"/> <br/>
     </form>
 
+    <br/>
+    <a href="SampleList2.jsp">Listeye Dön</a>
     </body>
 </html>

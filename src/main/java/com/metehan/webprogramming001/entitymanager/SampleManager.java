@@ -1,6 +1,4 @@
-package com.metehan.webprogramming001;
-
-import com.metehan.webprogramming001.Sample;
+package com.metehan.webprogramming001.entitymanager;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -87,4 +85,49 @@ public class SampleManager {
         return sample;
     }
 
+    public boolean update(Sample sample) throws ClassNotFoundException, SQLException {
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        String url = "jdbc:mysql://localhost:3306/webdb?serverTimeZone=UTL&useSLL=false&useSSL=false";
+        String user = "root";
+        String password = "root";
+
+        Connection connection = DriverManager.getConnection(url, user, password);
+
+        String sql = "update Sample set sampleName=?, sampleValue=? where sampleId=?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, sample.getSampleName());
+        statement.setDouble(2, sample.getSampleValue());
+        statement.setLong(3,sample.getSampleId());
+        int affected = statement.executeUpdate();
+
+//iso-8859-9
+
+        connection.close();
+
+
+        return affected >= 1 ? true : false;
+    }
+
+    public boolean delete(long sampleId) throws SQLException, ClassNotFoundException {
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        String url = "jdbc:mysql://localhost:3306/webdb?serverTimeZone=UTL&useSLL=false&useSSL=false";
+        String user = "root";
+        String password = "root";
+
+        Connection connection = DriverManager.getConnection(url, user, password);
+
+        String sql = "delete from Sample where sampleId=?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setLong(1, sampleId);
+        int affected = statement.executeUpdate();
+        connection.close();
+        return affected>0;
+    }
+
 }
+
+

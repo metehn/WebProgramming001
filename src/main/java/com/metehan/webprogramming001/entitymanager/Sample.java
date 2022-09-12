@@ -1,4 +1,4 @@
-package com.metehan.webprogramming001;
+package com.metehan.webprogramming001.entitymanager;
 
 import lombok.*;
 
