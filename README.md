@@ -18,3 +18,11 @@ Authentication <br/>
 <li>Session & Configuration</li>
 <li>Session & Database</li>
 </ul>
+
+Varlık-İlişki Uygulaması (Entitiy- Relation Application) <br/>
+<ul>
+<li>Veritabanı Şeması</li>
+<li>İlişkili Varlık-Yönetici</li>
+<li>İlişki-Ayrıntı(Relation-Detail)</li>
+<li>İlişki-Özet(Relation-Summary)</li>
+</ul>

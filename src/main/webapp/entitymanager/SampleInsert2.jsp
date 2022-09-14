@@ -14,8 +14,6 @@
         boolean updated = manager.insert(sample);
 //iso-8859-9
         message = "Kayıt güncellendi " + sampleName + " " + sampleValue + " " + (updated?"Evet":"Hayır");
-    }else{
-
     }
 
 %>
@@ -28,8 +26,7 @@
     <body>
     <h1>Örnek Ekleme</h1>
 
-    <i><%=message%>
-    </i>
+    <i><%=message%> </i>
     <form>
         Örnek Adı: <input type="text" name="sampleName"/> <br/>
         Örnek Değer: <input type="text" name="sampleValue"/> <br/>
